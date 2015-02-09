@@ -19,7 +19,7 @@ public class TaxiServiceTest {
      * <p/>
      * - SUCCESS - if one free driver accepted the order (in this case an answer also contains car number, arrival time and fare)
      * <p/>
-     * - NO CARS - if no one driver accepted the order
+     * - NO CARS - if no one driver accepted the order during 5 sec
      */
 
 
@@ -43,7 +43,7 @@ public class TaxiServiceTest {
     }
 
     /**
-     * Check NO_CARS result if no one driver accepted the order
+     * Check NO_CARS result if no one driver accepted the order during 5 sec
      *
      * @throws ExecutionException
      * @throws InterruptedException

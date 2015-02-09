@@ -3,7 +3,6 @@ package taxiservice;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
@@ -20,6 +19,7 @@ public class TaxiService {
             public ClientAnswer call() throws Exception {
                 ClientAnswer clientAnswer = new ClientAnswer(ClientAnswer.Result.NO_CARS);
 
+                //wait for 5 sec until the order will be taken
                 for (int i = 0; i <= 5; i++) {
 
                     for (TaxiDriver driver : taxiDrivers) {
@@ -37,13 +37,12 @@ public class TaxiService {
                 }
 
                 return clientAnswer;
-
             }
-
         };
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        return executor.submit(callable);
+
+        return Executors.newSingleThreadExecutor().submit(callable);
     }
+
     private void makeClientAnswer(TaxiOrder taxiOrder, ClientAnswer clientAnswer, TaxiDriver taxiDriver) {
         clientAnswer.setResult(ClientAnswer.Result.SUCCESS);
         clientAnswer.setCarNumber(taxiDriver.getCarNumber());

@@ -1,12 +1,9 @@
 package taxiservice;
 
-import java.util.Observable;
-import java.util.Observer;
-
 /**
  * @author alre
  */
-public class TaxiDriver implements Observer {
+public class TaxiDriver {
     private District currentLocation;
     private String carNumber;
     private TaxiOrder taxiOrder;
@@ -16,17 +13,8 @@ public class TaxiDriver implements Observer {
         this.carNumber = carNumber;
     }
 
-    public District getCurrentLocation() {
-        return currentLocation;
-    }
-
     public String getCarNumber() {
         return carNumber;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-
     }
 
     public void setTaxiOrder(TaxiOrder taxiOrder) {
